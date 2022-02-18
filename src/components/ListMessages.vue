@@ -4,7 +4,7 @@
   </div>
   <div v-else class="container list-messages p-3 bg-dark text-white mt-2 p-3">
     <input type="text" v-model="searchValue">
-    <OneMessage v-for="(mess) in this.$store.state.messages" :key="mess.timestamp" :mess="mess"  />
+    <OneMessage v-for="(mess) in searchedArr" :key="mess.timestamp" :mess="mess"  />
   </div>
 </template>
 
@@ -19,10 +19,18 @@ export default {
       searchValue: '',
     }
   },
-  methods: {
+  computed: {
     searchedArr() {
-      return
+      const arr = this.$store.state.messages.filter(elem => elem.message.includes(this.searchValue))
+      return arr
     }
+  },
+  methods: {
+    // down() {
+    //     console.log(this.searchValue)
+    //     const arr = this.$store.state.messages.filter(elem => elem.message.includes(this.searchValue))
+    //     console.log(arr)
+    // }
   }
 }
 </script>
