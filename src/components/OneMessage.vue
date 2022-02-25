@@ -1,6 +1,6 @@
 <template>
   <div class="message">
-    <div class="address">{{ mess.address }}<span>Time: {{ mess.date }}</span></div>
+    <div class="address">{{ mess.address }}<span>Date: {{ mess.date.toLocaleString() }}</span></div>
     <div class="text">{{ mess.message }}</div>
     <div v-if="mess.isWinner" class="winner">Won! 0.0001 ETH</div>
   </div>

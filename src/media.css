@@ -1,0 +1,25 @@
+@media (max-width: 992px) {
+    .header-info ul {
+        display: flex;
+    }
+    .add-message {
+        flex-direction: column;
+    }
+    .char {
+        margin-bottom: 10px;
+    }
+    .message {
+        flex-direction: column-reverse;
+    }
+    .winner {
+        top: auto!important;
+        bottom: 5px;
+    }
+    .text {
+        padding: 20px;
+        border-bottom: 1px solid ghostwhite;
+    }
+    .address {
+        padding: 10px 0px;
+    }
+}

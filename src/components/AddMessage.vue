@@ -1,29 +1,27 @@
 <template>
-  <header class="p-3 bg-dark text-white">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center">
-        <label class="char">Symbols: {{ charCounter }}</label>
-        <form class="col-9 mb-3 mb-lg-0 me-lg-3">
-          <input
-              type="text"
-              class="form-control form-control-dark"
-              :class="{
-                        wrongMessMore: charCounter < 10,
-                        wrongMessLess: charCounter > 256
-                       }"
-              placeholder="Your message here must be more 10 and less 256 characters"
-              v-model="msg"
-          >
-        </form>
-        <div class="text-end">
-          <button type="button"
-                  class="btn btn-secondary"
-                  @click="addNewMsg(msg)"
-                  :disabled="disableBtnLess || disableBtnMore">Add message</button>
-        </div>
+  <div class="p-3 bg-dark text-white">
+    <div class="add-message container d-flex flex-wrap align-items-center justify-content-center">
+      <label class="char">Symbols: {{ charCounter }}</label>
+      <form class="col-9 mb-3 mb-lg-0 me-lg-3">
+        <input
+            type="text"
+            class="form-control form-control-dark"
+            :class="{
+                      wrongMessMore: charCounter < 10,
+                      wrongMessLess: charCounter > 256
+                     }"
+            placeholder="Your message here must be more 10 and less 256 characters"
+            v-model="msg"
+        >
+      </form>
+      <div class="text-end">
+        <button type="button"
+                class="btn btn-secondary"
+                @click="addNewMsg(msg)"
+                :disabled="disableBtnLess || disableBtnMore">Add message</button>
       </div>
     </div>
-  </header>
+  </div>
 </template>
 
 <script>

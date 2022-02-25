@@ -117,7 +117,7 @@ export default {
 
 <style>
 body {
-  height: 100vh!important;
+  /*height: 100vh!important;*/
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -128,7 +128,7 @@ body {
   background: #2b2828!important;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
 }
 .main {
   flex: 1 1;

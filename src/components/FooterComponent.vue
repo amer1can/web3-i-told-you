@@ -1,13 +1,11 @@
 <template>
-  <div class="container">
-    <footer class="d-flex flex-wrap justify-content-around align-items-center py-3 my-4 border-top">
-        <span class="text-muted">© 2022 Company, Inc</span>
-        <div class="twitter">
-          <img src=".././assets/twitter-logo.svg" alt="">
-          <a href="https://twitter.com/amer1canWM" target="_blank" rel="noreferrer">Seeing on Twitter</a>
-        </div>
-    </footer>
-  </div>
+  <footer class="container d-flex flex-wrap justify-content-around align-items-center py-3 my-4 border-top">
+      <span class="text-muted">© 2022 Company, Inc</span>
+      <div class="twitter">
+        <img src=".././assets/twitter-logo.svg" alt="">
+        <a href="https://twitter.com/amer1canWM" target="_blank" rel="noreferrer">Seeing on Twitter</a>
+      </div>
+  </footer>
 </template>
 
 <script>
