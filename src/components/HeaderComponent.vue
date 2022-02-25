@@ -6,12 +6,10 @@
           <li class="mx-2">Network: {{ this.$store.state.networkStatus }}</li>
 <!--          <li class="mx-2">Address: {{ this.$store.state.accountAddress }}</li>-->
           <li class="mx-2">Address:
-            <span class="header-address"
+            <span id="header-address"
                   @click="copyAddress"
-                  data-toggle="tooltip"
-                  data-placement="right"
-                  title="Copy">{{ showShortAddress }}</span>
-            <span class="tooltip">Copy</span>
+                  >{{ showShortAddress }}</span>
+            <span id="tooltip">Copied</span>
           </li>
         </ul>
 
@@ -26,10 +24,10 @@
 
 export default {
   name: "HeaderComponent",
-  mounted() {
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
+  data() {
+    return {
+      copyingAddr: false,
+    }
   },
   computed: {
     btnStatus() {
@@ -52,6 +50,12 @@ export default {
           console.log('Copied: ', cp)
         })
         .catch(err => console.log(err))
+      const tooltip = document.querySelector('#tooltip')
+      tooltip.classList.add('showed')
+
+      setTimeout(()=> {
+        tooltip.classList.remove('showed')
+      }, 1000)
     }
   },
 }
@@ -61,10 +65,21 @@ export default {
 .nav span {
   cursor: pointer;
 }
-header-address {
-
+#tooltip {
+  visibility: hidden;
+  opacity: 0;
+  font-size: 10px;
+  padding: 3px;
+  background: black;
+  color: #e5bcbc;
+  margin-left: 10px;
+  border-radius: 3px;
+  transition: all 0.5s ease-in-out;
 }
-.tooltip {
-
+#tooltip.showed {
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
 }
+
 </style>
