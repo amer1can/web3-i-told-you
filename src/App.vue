@@ -117,7 +117,6 @@ export default {
 
 <style>
 body {
-  /*height: 100vh!important;*/
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -157,6 +156,27 @@ body {
 }
 .waiting-off .icon {
   display: none;
+}
+.tp {
+  position: absolute;
+  top: 20px;
+  right: 50%;
+  transform: translateX(-50%);
+  visibility: hidden;
+  opacity: 0;
+  font-size: 12px;
+  padding: 10px 15px;
+  background: black;
+  color: #e5bcbc;
+  border-radius: 10px;
+  transform: translateY(-100%);
+  transition: all 0.7s ease-in-out;
+}
+.tp.showed {
+  transform: translateY(0);
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.7s ease-in-out;
 }
 
 </style>

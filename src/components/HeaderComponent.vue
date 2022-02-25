@@ -7,20 +7,25 @@
 <!--          <li class="mx-2">Address: {{ this.$store.state.accountAddress }}</li>-->
           <li class="mx-2">Address:
             <span id="header-address"
-                  @click="copyAddress"
+                  @click="copyThisAddress(this.$store.state.accountAddress)"
                   >{{ showShortAddress }}</span>
-            <span id="tooltip">Copied</span>
+<!--            <span id="tooltip">Copied</span>-->
           </li>
         </ul>
 
         <div class="text-end">
-          <button type="button" class="btn btn-warning" @click="connectToWallet">{{ btnStatus }}</button>
+          <button type="button"
+                  class="btn"
+                  :class="this.$store.state.accountAddress !== '---' ? 'btn-success disabled' : 'btn-warning'"
+                  @click="connectToWallet">{{ btnStatus }}</button>
         </div>
       </div>
   </header>
 </template>
 
 <script>
+
+import { copyAddress } from "@/utils";
 
 export default {
   name: "HeaderComponent",
@@ -43,19 +48,8 @@ export default {
     async connectToWallet() {
       await this.$store.dispatch('connectToWallet')
     },
-    copyAddress() {
-      const cp = this.$store.state.accountAddress
-      navigator.clipboard.writeText(cp)
-        .then(() => {
-          console.log('Copied: ', cp)
-        })
-        .catch(err => console.log(err))
-      const tooltip = document.querySelector('#tooltip')
-      tooltip.classList.add('showed')
-
-      setTimeout(()=> {
-        tooltip.classList.remove('showed')
-      }, 1000)
+    copyThisAddress(address) {
+      copyAddress(address)
     }
   },
 }
@@ -65,21 +59,6 @@ export default {
 .nav span {
   cursor: pointer;
 }
-#tooltip {
-  visibility: hidden;
-  opacity: 0;
-  font-size: 10px;
-  padding: 3px;
-  background: black;
-  color: #e5bcbc;
-  margin-left: 10px;
-  border-radius: 3px;
-  transition: all 0.5s ease-in-out;
-}
-#tooltip.showed {
-  visibility: visible;
-  opacity: 1;
-  transition: all 0.5s ease-in-out;
-}
+
 
 </style>

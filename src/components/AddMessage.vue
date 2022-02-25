@@ -1,7 +1,7 @@
 <template>
   <div class="p-3 bg-dark text-white">
     <div class="add-message container d-flex flex-wrap align-items-center justify-content-center">
-      <label class="char">Symbols: {{ charCounter }}</label>
+      <label class="char">Chars: {{ charCounter }}</label>
       <form class="col-9 mb-3 mb-lg-0 me-lg-3">
         <input
             type="text"

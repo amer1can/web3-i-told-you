@@ -35,7 +35,7 @@ export default {
         const arr = this.$store.state.messages.filter(elem => elem.message.toLowerCase().includes(this.searchMessage.toLowerCase()))
         return arr.sort().reverse()
       } else {
-        const addrFilter = this.$store.state.messages.filter(elem => elem.address.includes(this.searchAddress))
+        const addrFilter = this.$store.state.messages.filter(elem => elem.address.toLowerCase().includes(this.searchAddress.toLowerCase()))
         const arr = addrFilter.filter(elem => elem.message.toLowerCase().includes(this.searchMessage.toLowerCase()))
         return arr.sort().reverse()
       }
@@ -71,7 +71,7 @@ export default {
   font-size: 12px;
 }
 .search-addr {
-  flex-basis: 30%;
+  flex-basis: 12%;
   position: relative;
 }
 .btn-clear {
@@ -85,7 +85,8 @@ export default {
   font-size: 10px;
 }
 .search-mess {
-  flex-basis: 62%;
+  /*flex-basis: 62%;*/
+  flex-basis: 70%;
   position: relative;
 }
 </style>

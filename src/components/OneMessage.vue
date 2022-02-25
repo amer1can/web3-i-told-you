@@ -1,15 +1,30 @@
 <template>
   <div class="message">
-    <div class="address">{{ mess.address }}<span>Date: {{ mess.date.toLocaleString() }}</span></div>
+    <div class="address">
+      <span @click="copyThisAddress(mess.address)">{{ showShortAddress }}</span>
+      <span>Date: {{ mess.date.toLocaleString() }}</span>
+    </div>
     <div class="text">{{ mess.message }}</div>
-    <div v-if="mess.isWinner" class="winner">Won! 0.0001 ETH</div>
+    <div v-if="mess.isWinner" class="winner">Won!</div>
   </div>
 </template>
 
 <script>
+import { copyAddress } from "@/utils";
+
 export default {
   name: "OneMessage",
-  props: ['mess']
+  props: ['mess'],
+  computed: {
+    showShortAddress() {
+      return this.mess.address.slice(0,4) + '...' + this.mess.address.slice(-4)
+    }
+  },
+  methods: {
+    copyThisAddress(address) {
+      copyAddress(address)
+    },
+  }
 }
 </script>
 
@@ -25,7 +40,7 @@ export default {
 .address {
   margin-right: 10px;
   color: #e5bcbc;
-  flex-basis: 25%;
+  flex-basis: 12%;
   align-self: center;
 
 }
