@@ -1,19 +1,21 @@
 <template>
   <div v-if="this.$store.state.messages.length === 0" class="no-messages container list-messages p-3 bg-dark text-white mt-2 p-3">
-    <h1>No messages yet...</h1>
+    <h1>Please, connect your wallet...</h1>
   </div>
-  <div v-else class="container list-messages p-3 bg-dark text-white mt-2 p-3">
-    <div class="searching-wrap">
-      <div class="search-addr">
-        <input type="text" v-model="searchAddress" placeholder="Search by address">
-        <button class="btn-clear" @click="clearAddrSearch"></button>
+  <div v-else class="container">
+    <div class="list-messages p-3 bg-dark text-white mt-2 p-3">
+      <div class="searching-wrap">
+        <div class="search-addr">
+          <input type="text" v-model="searchAddress" placeholder="Search by address">
+          <button class="btn-close btn-clear" @click="clearAddrSearch">X</button>
+        </div>
+        <div class="search-mess">
+          <input type="text" v-model="searchMessage" placeholder="Search by message">
+          <button class="btn-close btn-clear" @click="clearMessSearch">X</button>
+        </div>
       </div>
-      <div class="search-mess">
-        <input type="text" v-model="searchMessage" placeholder="Search by message">
-        <button class="btn-clear" @click="clearMessSearch"></button>
-      </div>
+      <OneMessage v-for="(mess) in searchedMes" :key="mess.timestamp" :mess="mess"  />
     </div>
-    <OneMessage v-for="(mess) in searchedMes" :key="mess.timestamp" :mess="mess"  />
   </div>
 </template>
 
@@ -53,6 +55,11 @@ export default {
 </script>
 
 <style scoped>
+.list-messages {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
 .searching-wrap {
   display: flex;
 }
@@ -71,22 +78,22 @@ export default {
   font-size: 12px;
 }
 .search-addr {
-  flex-basis: 12%;
+  flex-basis: 15%;
   position: relative;
 }
 .btn-clear {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   top: 5px;
   right: 5px;
-  background: red;
-  border-radius: 50%;
+  background: #848181;
+  border-radius: 2px;
   font-size: 10px;
 }
 .search-mess {
   /*flex-basis: 62%;*/
-  flex-basis: 70%;
+  flex-basis: 100%;
   position: relative;
 }
 </style>

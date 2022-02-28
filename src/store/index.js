@@ -27,7 +27,7 @@ export default createStore({
     }
   },
   actions: {
-    async connectToWallet({commit}) {
+    async connectToWallet({commit, dispatch}) {
       const { ethereum } = window
       const accounts = await ethereum.request({
         method: 'eth_requestAccounts'
@@ -35,6 +35,9 @@ export default createStore({
       if(accounts.length !== 0) {
         commit('connectToWallet', accounts[0])
         console.log('Connected to: ', accounts[0])
+        ethereum.chainId === '0x4' ? this.state.networkStatus = 'Rinkeby'
+            : this.$store.state.networkStatus = ''
+        dispatch('getAllMessages')
       }
     },
     async getAllMessages({commit}) {
@@ -55,7 +58,7 @@ export default createStore({
       }
       commit('setAwaitingState', false)
     },
-    async addNewMessage({commit}, msg) {
+    async addNewMessage({commit, dispatch}, msg) {
       commit('setAwaitingState', true)
       try {
         const { ethereum } = window
@@ -89,6 +92,7 @@ export default createStore({
         console.log('addingNewMessage error', err)
       }
       commit('setAwaitingState', false)
+      dispatch('getAllMessages')
     },
   },
   modules: {
