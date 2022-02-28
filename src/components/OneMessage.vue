@@ -1,8 +1,8 @@
 <template>
   <div class="message">
     <div class="address">
-      <span @click="copyThisAddress(mess.address)">{{ showShortAddress }}</span>
-      <span>Date: {{ mess.date.toLocaleString() }}</span>
+      <span class="span-addr" @click="copyThisAddress(mess.address)">{{ showShortAddress }}</span>
+      <span class="span-date" >Date: {{ mess.date.toLocaleString() }}</span>
     </div>
     <div class="text">{{ mess.message }}</div>
     <div v-if="mess.isWinner" class="winner">Won!</div>
@@ -40,11 +40,15 @@ export default {
 .address {
   margin-right: 10px;
   color: #e5bcbc;
-  flex-basis: 12%;
+  flex-basis: 20%;
   align-self: center;
-
 }
-.address span {
+.span-addr {
+  color: red;
+  font-size: 14px;
+  cursor: pointer;
+}
+.span-date {
   display: block;
   color: coral;
   font-size: 10px;

@@ -9,15 +9,6 @@
                   @click="copyThisAddress(this.$store.state.accountAddress)"
                   >{{ showShortAddress }}</span>
           </li>
-          <li>
-            <div class="d-flex">
-              <input type="file"
-                     class="form-control"
-                     ref="file"
-                     @change="handleFileUpload">
-              <button class="btn btn-secondary mx-2" @click="sendFile">Submit</button>
-            </div>
-          </li>
         </ul>
 
         <div class="text-end">
@@ -33,14 +24,12 @@
 <script>
 
 import { copyAddress } from "@/utils";
-import { create } from 'ipfs-http-client'
 
 export default {
   name: "HeaderComponent",
   data() {
     return {
       copyingAddr: false,
-      file: '',
     }
   },
   computed: {
@@ -60,22 +49,6 @@ export default {
     copyThisAddress(address) {
       copyAddress(address)
     },
-    handleFileUpload() {
-      this.file = this.$refs.file.files[0]
-      console.log(this.file)
-    },
-    async sendFile() {
-      const client = create('https://ipfs.infura.io:5001/api/v0')
-
-      try {
-        const added = await client.add(this.file)
-        const url = `https://ipfs.infura.io/ipfs/${added.path}`
-        console.log('URL added file: ', url)
-
-      } catch(err) {
-        console.log('Upload error', err)
-      }
-    }
   },
 }
 </script>

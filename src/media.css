@@ -5,9 +5,6 @@
     .add-message {
         flex-direction: column;
     }
-    .char {
-        margin-bottom: 10px;
-    }
     .message {
         flex-direction: column-reverse;
     }
@@ -17,9 +14,19 @@
     }
     .text {
         padding: 20px;
-        border-bottom: 1px solid ghostwhite;
+        border-bottom: 1px solid #fff8fa;
     }
     .address {
         padding: 10px 0px;
+    }
+    .search-addr {
+        flex-basis: 55%!important;
+    }
+
+}
+
+@media (max-width: 576px) {
+    .nav, .nav button {
+        font-size: 12px;
     }
 }

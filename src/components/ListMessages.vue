@@ -58,8 +58,21 @@ export default {
 .list-messages {
   max-height: 70vh;
   overflow-y: auto;
-}
+  border-radius: 5px;
 
+}
+.list-messages::-webkit-scrollbar {
+  width: 10px;
+}
+.list-messages::-webkit-scrollbar-track {
+  background-color: #7f7676;
+  border-radius: 5px;
+}
+.list-messages::-webkit-scrollbar-thumb {
+  background-color: #613434;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
 .searching-wrap {
   display: flex;
 }
@@ -78,7 +91,7 @@ export default {
   font-size: 12px;
 }
 .search-addr {
-  flex-basis: 15%;
+  flex-basis: 26%;
   position: relative;
 }
 .btn-clear {

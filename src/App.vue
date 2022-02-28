@@ -23,6 +23,7 @@ import HeaderComponent from "@/components/HeaderComponent";
 import FooterComponent from "@/components/FooterComponent";
 import AddMessage from "@/components/AddMessage";
 import ListMessages from "@/components/ListMessages";
+import './media.css'
 
 import abi from './abi/IToldYou.json';
 import { ethers } from "ethers";
