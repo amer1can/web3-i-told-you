@@ -1,7 +1,7 @@
 <template>
   <div class="message">
     <div class="address">
-      <span class="span-addr" @click="copyThisAddress(mess.address)">{{ showShortAddress }}</span>
+      <span class="span-addr" @click="copyThisAddress(mess.address)">Address: {{ showShortAddress }}</span>
       <span class="span-date" >Date: {{ mess.date.toLocaleString() }}</span>
     </div>
     <div class="text">{{ mess.message }}</div>

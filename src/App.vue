@@ -57,7 +57,9 @@ export default {
       console.log('We have ethereum object', this)
       await this.checkIfWalletIsConnected();
       this.getContractInstance()
-      await this.$store.dispatch('getAllMessages')
+      if (this.$store.state.accountAddress !== '---') {
+        await this.$store.dispatch('getAllMessages')
+      }
     }
   },
   methods: {
@@ -118,6 +120,7 @@ export default {
 
 <style>
 body {
+  min-width: 340px;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

@@ -1,7 +1,7 @@
 <template>
   <header class="p-3 bg-dark text-white">
-      <div class="header-info container d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+      <div class="header-info container d-flex align-items-center justify-content-between justify-content-lg-start">
+        <ul class="nav">
           <li class="text-white-50">{{ this.$store.state.metamaskStatus }}</li>
           <li class="mx-2">Network: {{ this.$store.state.networkStatus }}</li>
           <li class="mx-2">Address:
@@ -11,7 +11,7 @@
           </li>
         </ul>
 
-        <div class="text-end">
+        <div class="">
           <button type="button"
                   class="btn"
                   :class="this.$store.state.accountAddress !== '---' ? 'btn-success disabled' : 'btn-warning'"
@@ -38,8 +38,13 @@ export default {
     },
     showShortAddress() {
       const str = this.$store.state.accountAddress;
-      const res = str.slice(0,4) + '...' + str.slice(-4)
-      return res
+      if (str === '---') {
+        const res = str
+        return res
+      } else {
+        const res = str.slice(0,4) + '...' + str.slice(-4)
+        return res
+      }
     }
   },
   methods: {
